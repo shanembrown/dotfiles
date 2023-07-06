@@ -1,0 +1,24 @@
+# Shortcuts
+
+alias reload="source ~/.zshrc"
+alias v="vim"
+
+
+# List declared aliases
+
+alias aliases="alias | sed 's/=.*//'"
+
+
+# Directory listings/traversal
+
+alias l="ls -lahGF"  # List in long format, include dotfiles, unit suffixes, colorized output, trailing filepath '/' 
+alias ld="ls -ldG */"  # List in long format, only directories, colorized output
+
+
+# File/Finder shortcuts
+
+alias f="open -a Finder ./"  # f: Opens current directory in macOS Finder
+alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"  # Navigate to iCloud directory
+alias iCloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"  # Navigate to iCloud directory 
+
+
