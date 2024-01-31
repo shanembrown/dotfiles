@@ -1,11 +1,16 @@
-
 " enable syntax highlighting 
 syntax enable
 
 " enable line numbers
 set number
 
-" set relative/absolute auto-toggle for line numbers based on Insert
+" set listchars: tab = ▸; end-of-line = ¬; trail= ·
+set listchars=eol:¬,tab:▸-,space:·
+
+" using autocommand for tiletype indentation
+autocmd FileType markdown setlocal tabstop=2 shiftwidth=4 softtabstop=4 expandtab
+
+" " set relative/absolute auto-toggle for line numbers based on Insert
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
@@ -13,15 +18,14 @@ set number
 :augroup END
 
 " enable search highlighting
-:set hlsearch
+set hlsearch
 
 " set line break at indent
 set breakindent
 
-" toggle relative line numbers
-nmap <C-L><C-L> :set invrelativenumber<CR>
 
 " split window navigation
+" use ctrl-j; rather than using ctrl-w then j
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -32,5 +36,3 @@ nnoremap <C-y> "+y
 vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
-
-
