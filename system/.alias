@@ -1,24 +1,44 @@
-# Shortcuts
+#!/usr/bin/env bash
 
-alias reload="source ~/.zshrc"
-alias v="vim"
+# +----+
+# | ls |
+# +----+
+
+alias ls='ls --color=always'
+alias l='ls -l'
+alias ll='ls -lahF'
+
+# +----+
+# | cp |
+# +----+
+
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -iv'
+
+# +----------+
+# | terminal |
+# +----------+
+
+alias f='open -a Finder ./'             # f: Opens current directory in Finder
+alias c='clear'                         # c: Clears Terminal display
+alias v='vim'
+alias p='python3'
+
+# +----------+
+# | personal |
+# +----------+
+
+alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
+alias mini='open vnc://192.168.4.163'
+alias sn='python3 ~/Desktop/Scripts/swapPrestage_v1.1.py'
+alias ade='cd /Users/shane.brown/Dropbox\ \(JAMF\ Software\)/macOS\ Enrollment\ Videos/'
 
 
-# List declared aliases
+# +-----+
+# | zsh |
+# +-----+
 
-alias aliases="alias | sed 's/=.*//'"
-
-
-# Directory listings/traversal
-
-alias l="ls -lahGF"  # List in long format, include dotfiles, unit suffixes, colorized output, trailing filepath '/' 
-alias ld="ls -ldG */"  # List in long format, only directories, colorized output
-
-
-# File/Finder shortcuts
-
-alias f="open -a Finder ./"  # f: Opens current directory in macOS Finder
-alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"  # Navigate to iCloud directory
-alias iCloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"  # Navigate to iCloud directory 
-
-
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
+alias szsh='source ~/.zshrc'
