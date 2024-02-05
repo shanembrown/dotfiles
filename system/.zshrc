@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-#PROMPT='%B%F{240}%~%f%b %# '
-
 # +------------+
 # | NAVIGATION |
 # +------------+
@@ -13,9 +11,6 @@ setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
 setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
 
 setopt NO_CASE_GLOB         #setopt GLOB_COMPLETE
-
-cd() { builtin cd "$@"; ls; }           # Always list directory contents upon 'cd'
-
 
 # enable completion
 autoload -Uz compinit && compinit
@@ -43,6 +38,12 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 # +---------+
 
 source $HOME/.aliases
+
+# +-----------+
+# | FUNCTIONS |
+# +-----------+
+
+source $HOME/.functions
 
 # +--------+
 # | PROMPT |

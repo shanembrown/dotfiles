@@ -1,11 +1,8 @@
+#!/usr/bin/env zsh
+
 # Create a new directory and enter it
 function mk() {
   mkdir -p "$@" && cd "$@"
-}
-
-# Open man page as PDF
-function manpdf() { 
-  man -t "${1}" | open -f -a /Applications/Preview.app/
 }
 
 # Always list directory contents upon 'cd'
