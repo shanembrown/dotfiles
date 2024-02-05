@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 " enable syntax highlighting 
 syntax enable
 
@@ -9,10 +7,7 @@ set number
 " set listchars: tab = ▸; end-of-line = ¬; trail= ·
 set listchars=eol:¬,tab:▸-,space:·
 
-" using autocommand for tiletype indentation
-autocmd FileType markdown setlocal tabstop=2 shiftwidth=4 softtabstop=4 expandtab
-
-" " set relative/absolute auto-toggle for line numbers based on Insert
+" set relative/absolute auto-toggle for line numbers based on Insert
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
