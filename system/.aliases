@@ -25,6 +25,14 @@ alias c='clear'                         # c: Clears Terminal display
 alias v='vim'
 alias p='python3'
 
+# +------+
+# | tart |
+# +------+
+
+alias tl='tart list'
+alias tn='tart clone ghcr.io/cirruslabs/macos-sonoma-base:latest'
+alias td='tart delete'
+
 # +----------+
 # | personal |
 # +----------+
