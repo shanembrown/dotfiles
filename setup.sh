@@ -8,3 +8,4 @@ loggedInUser=$( scutil <<< "show State:/Users/ConsoleUser" | awk '/Name :/ && ! 
 ln -s /Users/$loggedInUser/dotfiles/system/.zshrc /Users/$loggedInUser/.zshrc
 ln -s /Users/$loggedInUser/dotfiles/system/.vimrc /Users/$loggedInUser/.vimrc
 ln -s /Users/$loggedInUser/dotfiles/system/.aliases /Users/$loggedInUser/.aliases
+ln -s /Users/$loggedInUser/dotfiles/system/.functions /Users/$loggedInUser/.functions
