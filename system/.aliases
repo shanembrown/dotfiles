@@ -33,6 +33,10 @@ alias p='python3'
 alias tl='tart list'
 alias tn='tart clone ghcr.io/cirruslabs/macos-sonoma-base:latest'
 alias trun='tart run'
+alias trundir='tart run --dir=Shared:~/VMShared'
+alias trunvnc='tart run --vnc'
+alias trundirvnc='tart run --dir=Shared:~/VMShared'
+alias trunvncdir='trundirvnc'
 alias td='tart delete'
 
 # +----------+
