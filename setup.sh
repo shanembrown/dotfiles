@@ -7,7 +7,10 @@ loggedInUser=$( scutil <<< "show State:/Users/ConsoleUser" | awk '/Name :/ && ! 
 
 # use find to get the dotfile filenames
 # loop through to create symlinks
-for dotFile in `find /Users/$loggedInUser/dotfiles/system -type f -exec basename {} \;`; do; `ln -s /Users/$loggedInUser/dotfiles/system/$dotFile /Users/$loggedInUser/$dotFile`; done
+for dotFile in `find ./system -type f -exec basename {} \;`
+do
+  ln -s /Users/$loggedInUser/dotfiles/system/$dotFile /Users/$loggedInUser/$dotFile
+done
 
 #ln -s /Users/$loggedInUser/dotfiles/system/.zshrc /Users/$loggedInUser/.zshrc
 #ln -s /Users/$loggedInUser/dotfiles/system/.vimrc /Users/$loggedInUser/.vimrc
