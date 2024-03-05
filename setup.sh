@@ -11,8 +11,3 @@ for dotFile in `find ./system -type f -exec basename {} \;`
 do
   ln -s /Users/$loggedInUser/dotfiles/system/$dotFile /Users/$loggedInUser/$dotFile
 done
-
-#ln -s /Users/$loggedInUser/dotfiles/system/.zshrc /Users/$loggedInUser/.zshrc
-#ln -s /Users/$loggedInUser/dotfiles/system/.vimrc /Users/$loggedInUser/.vimrc
-#ln -s /Users/$loggedInUser/dotfiles/system/.aliases /Users/$loggedInUser/.aliases
-#ln -s /Users/$loggedInUser/dotfiles/system/.functions /Users/$loggedInUser/.functions
