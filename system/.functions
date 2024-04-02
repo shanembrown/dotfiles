@@ -9,3 +9,12 @@ function mk() {
 function cd() {
   builtin cd $@; ll;
 }
+
+# Change to demo background
+function demo_wallpaper() {
+#  IMAGE_PATH="${HOME}/Desktop/trustedAccessDesktop.png"
+
+  #osascript -e 'tell application "System Events"' -e 'set desktopCount to count of desktops' -e 'repeat with desktopNumber from 1 to desktopCount' -e 'tell desktop desktopNumber' -e 'set picture to "~/Desktop/trustedAccessDesktop.png"' -e 'end tell' -e 'end repeat' -e 'end tell'
+
+  osascript -e 'tell application "System Events"' -e 'tell every desktop' -e 'set picture to "/Users/shane.brown/Desktop/trustedAccessDesktop.png"' -e 'end tell' -e 'end tell'
+}

@@ -48,6 +48,15 @@ alias iCloud='icloud'
 alias mini='open vnc://192.168.4.163'
 alias sn='python3 ~/Desktop/Scripts/swapPrestage_v1.1.py'
 alias ade='cd /Users/shane.brown/Dropbox\ \(JAMF\ Software\)/Jamf\ Connect-Enrollment\ Videos/'
+alias demo_mode='/usr/libexec/PlistBuddy -c "set AllSpacesAndDisplays:Desktop:Content:Choices:0:Files:0:relative file:///Users/shane.brown/Resources/demoModeDesktop.png" ~/Library/Application\ Support/com.apple.wallpaper/Store/Index.plist;
+    killall WallpaperAgent;
+    defaults write com.apple.dock autohide -bool true && killall Dock;
+    defaults write com.apple.menuextra.clock IsAnalog -bool true && killall SystemUIServer;
+    open /Applications/Google\ Chrome.app;'
+alias work_mode='/usr/libexec/PlistBuddy -c "set AllSpacesAndDisplays:Desktop:Content:Choices:0:Files:0:relative file:///Users/shane.brown/Resources/defaultDesktop.jpg" ~/Library/Application\ Support/com.apple.wallpaper/Store/Index.plist;
+    killall WallpaperAgent;
+    defaults write com.apple.dock autohide -bool false && killall Dock;
+    defaults write com.apple.menuextra.clock IsAnalog -bool false && killall SystemUIServer'
 
 
 # +-----+
