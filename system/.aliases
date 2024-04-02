@@ -58,7 +58,7 @@ alias work_mode='/usr/libexec/PlistBuddy -c "set AllSpacesAndDisplays:Desktop:Co
     killall WallpaperAgent;
     defaults write com.apple.dock autohide -bool false && killall Dock;
     defaults write com.apple.menuextra.clock IsAnalog -bool false && killall SystemUIServer;
-    defaults write ~/Library/Preferences/com.apple.WindowManager.plist StandardHideDesktopIcons -bool TRUE;'
+    defaults write ~/Library/Preferences/com.apple.WindowManager.plist StandardHideDesktopIcons -bool FALSE'
 
 
 # +-----+
