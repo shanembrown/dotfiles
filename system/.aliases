@@ -18,8 +18,7 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 
 # +----------+
-# | terminal |
-# +----------+
+# | terminal | # +----------+
 
 alias f='open -a Finder ./'             # f: Opens current directory in Finder
 alias c='clear'                         # c: Clears Terminal display
@@ -53,6 +52,7 @@ alias demo_mode='/usr/libexec/PlistBuddy -c "set AllSpacesAndDisplays:Desktop:Co
     defaults write com.apple.dock autohide -bool true && killall Dock;
     defaults write com.apple.menuextra.clock IsAnalog -bool true && killall SystemUIServer;
     defaults write ~/Library/Preferences/com.apple.WindowManager.plist StandardHideDesktopIcons -bool TRUE;
+    shortcuts run "Turn DND On";
     open /Applications/Google\ Chrome.app;
     rm -rf ~/Downloads/*;'
 
@@ -60,7 +60,8 @@ alias work_mode='/usr/libexec/PlistBuddy -c "set AllSpacesAndDisplays:Desktop:Co
     killall WallpaperAgent;
     defaults write com.apple.dock autohide -bool false && killall Dock;
     defaults write com.apple.menuextra.clock IsAnalog -bool false && killall SystemUIServer;
-    defaults write ~/Library/Preferences/com.apple.WindowManager.plist StandardHideDesktopIcons -bool FALSE'
+    defaults write ~/Library/Preferences/com.apple.WindowManager.plist StandardHideDesktopIcons -bool FALSE;
+    shortcuts run "Turn DND Off"'
 
 
 # +-----+
