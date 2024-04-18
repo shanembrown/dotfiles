@@ -53,6 +53,7 @@ alias demo_mode='/usr/libexec/PlistBuddy -c "set AllSpacesAndDisplays:Desktop:Co
     defaults write com.apple.menuextra.clock IsAnalog -bool true && killall SystemUIServer;
     defaults write ~/Library/Preferences/com.apple.WindowManager.plist StandardHideDesktopIcons -bool TRUE;
     shortcuts run "Turn DND On";
+    mini;
     open /Applications/Google\ Chrome.app;
     rm -rf ~/Downloads/*;'
 
