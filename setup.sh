@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# will clean this up later; testing generic workflow for now
-
 # get logged-in user
 loggedInUser=$( scutil <<< "show State:/Users/ConsoleUser" | awk '/Name :/ && ! /loginwindow/ { print $3 }' )
 
