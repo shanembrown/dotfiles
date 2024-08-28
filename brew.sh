@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh 
 
 # borrowed mostly from https://github.com/CoreyMSchafer/dotfiles/brew.sh
 
