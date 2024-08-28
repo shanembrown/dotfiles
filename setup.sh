@@ -7,5 +7,6 @@ loggedInUser=$( scutil <<< "show State:/Users/ConsoleUser" | awk '/Name :/ && ! 
 # loop through to create symlinks
 for dotFile in `find ./system -type f -exec basename {} \;`
 do
+  echo "Creating symlink to $dotFile in home directory."
   ln -s /Users/$loggedInUser/dotfiles/system/$dotFile /Users/$loggedInUser/$dotFile
 done
