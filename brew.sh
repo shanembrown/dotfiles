@@ -49,7 +49,7 @@ done
 apps=(
   "sublime-text"
   "rectangle"
-  "discord"
+  "suspicious-package"
   "postman"
 )
 
