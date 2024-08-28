@@ -10,3 +10,6 @@ do
   echo "Creating symlink to $dotFile in home directory."
   ln -s /Users/$loggedInUser/dotfiles/system/$dotFile /Users/$loggedInUser/$dotFile
 done
+
+# Run the Homebrew Script
+./brew.sh
