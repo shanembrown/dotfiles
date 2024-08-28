@@ -32,7 +32,18 @@ brew cleanup
 
 # Define an array of packages to install using Homebrew.
 packages=(
+  "dockutil"
 )
+
+# Loop over the array to install each package.
+for package in "${packages[@]}"; do
+  if brew list --formulae | grep -q "^$package\$"; then
+    echo "$package is already installed. Skipping..."
+  else
+    echo "Installing $package"
+    brew install "$package"
+  fi
+done
 
 # Define an array of applications to install using Homebrew cask.
 apps=(
