@@ -17,3 +17,9 @@ if ! command -v brew &>/dev/null; then
 else
   echo "Homebrew is already installed."
 fi
+
+# Verify brew is now accessible
+if ! command -v brew &>/dev/null; then
+  echo "Failed to configure Homebrew in PATH. Please add Homebrew to your PATH manually."
+  exit 1
+fi
