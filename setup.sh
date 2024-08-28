@@ -13,3 +13,6 @@ done
 
 # Run the Homebrew Script
 sh ./brew.sh
+
+# Run the dockutil Script
+sh ./dockutil.sh
