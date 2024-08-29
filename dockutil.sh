@@ -7,8 +7,10 @@ fi
 
 # check to see if dockutil was installed via Homebrew
 if [[ -x "/opt/homebrew/bin/dockutil" ]]; then
-  dockutil="opt/homebrew/bin/dockutil"
-fi
+  dockutil="opt/homebrew/bin/dockutil" fi
+
+# clear existing dock
+dockutil --remove all --no-restart
 
 # full path to Applications to add to the Dock
 apps=(
@@ -18,10 +20,13 @@ apps=(
   "/Applications/Self Service.app"
 )
 
-# loop through Apps and check if App is installed
+# loop through apps to add them to the dock
 for app in "${apps[@]}"; do
   dockutil --add "$app" --position end --no-restart
 done
+
+# add ~/Downloads to the dock
+dockutil --add ~/Downloads --view list --display folder --sort dateadded --no-restart
 
 # disable show recent
 defaults write com.apple.dock show-recents -bool FALSE
