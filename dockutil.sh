@@ -7,7 +7,8 @@ fi
 
 # check to see if dockutil was installed via Homebrew
 if [[ -x "/opt/homebrew/bin/dockutil" ]]; then
-  dockutil="opt/homebrew/bin/dockutil" fi
+  dockutil="opt/homebrew/bin/dockutil"
+fi
 
 # clear existing dock
 dockutil --remove all --no-restart
