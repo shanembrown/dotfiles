@@ -18,12 +18,14 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 
 # +----------+
-# | terminal | # +----------+
+# | terminal | 
+# +----------+
 
 alias f='open -a Finder ./'             # f: Opens current directory in Finder
 alias c='clear'                         # c: Clears Terminal display
 alias v='vim'
 alias p='python3'
+alias brew_update='brew update; brew upgrade; brew upgrade --cask; brew cleanup"
 
 # +------+
 # | tart |
