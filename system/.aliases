@@ -32,7 +32,7 @@ alias brew_update='brew update; brew upgrade; brew upgrade --cask; brew cleanup'
 # +------+
 
 alias tl='tart list'
-alias tn='tart clone ghcr.io/cirruslabs/macos-sonoma-base:latest'
+alias tn='tart clone ghcr.io/cirruslabs/macos-sequoia-base:latest'
 alias trun='tart run'
 alias trundir='tart run --dir=Shared:~/VMShared'
 alias trunvnc='tart run --no-graphics --vnc'
