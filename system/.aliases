@@ -40,6 +40,16 @@ alias trundirvnc='tart run --dir=Shared:~/VMShared --no-graphics --vnc'
 alias trunvncdir='trundirvnc'
 alias td='tart delete'
 
+# +-----+
+# | git |
+# +-----+
+
+alias gs='git status'
+alias ga='git add'
+alias gaa='git add --all'
+alias gc='git commit'
+alias gp='git push'
+
 # +----------+
 # | personal |
 # +----------+
