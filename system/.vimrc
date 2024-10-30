@@ -34,8 +34,9 @@ vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
 
-" add shebang to new .sh files created
+" add headers to filetypes
 augroup templates
   autocmd! BufNewFile *.sh execute "normal i#!/usr/bin/env bash\r\r"
+  autocmd! BufNewFile *.zsh execute "normal i#!/bin/zsh\r\r"
   autocmd! BufNewFile *.plist execute "normal i<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\r<plist version=\"1.0\">\r</plist>"
 augroup END
