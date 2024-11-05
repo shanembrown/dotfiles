@@ -51,6 +51,7 @@ apps=(
   "rectangle"
   "suspicious-package"
   "postman"
+  "cirruslabs/cli/tart"
 )
 
 # Loop over the array to install each application.
