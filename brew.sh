@@ -33,6 +33,7 @@ brew cleanup
 # Define an array of packages to install using Homebrew.
 packages=(
   "dockutil"
+  "neovim"
 )
 
 # Loop over the array to install each package.

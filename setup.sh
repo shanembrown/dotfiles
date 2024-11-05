@@ -11,6 +11,16 @@ do
   ln -s /Users/$loggedInUser/dotfiles/system/$dotFile /Users/$loggedInUser/$dotFile
 done
 
+# mkdir and configure neovim init.vim from ~/.vimrc
+mkdir /Users/$loggedInUser/.config
+mkdir /Users/$loggedInUser/.config/nvim
+
+cat > /Users/$loggedInUser/.config/nvim/init.vim << EOF
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
+EOF
+
 # Run the Homebrew Script
 sh ./brew.sh
 
