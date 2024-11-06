@@ -54,7 +54,7 @@ endif
 call plug#begin()
 
 " List your plugins here
-Plug 'Plug 'sainnhe/everforest''
+Plug 'sainnhe/everforest'
 
 call plug#end()
 
