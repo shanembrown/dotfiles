@@ -53,6 +53,7 @@ apps=(
   "suspicious-package"
   "postman"
   "cirruslabs/cli/tart"
+  "iterm2"
 )
 
 # Loop over the array to install each application.
