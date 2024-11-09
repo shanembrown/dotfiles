@@ -1,11 +1,14 @@
-" enable syntax highlighting 
+" +----------------+
+" | BASIC SETTINGS | 
+" +----------------+
+" enable syntax highlighting
 syntax enable
-
 " enable line numbers
 set number
-
-" set listchars: tab = ▸; end-of-line = ¬; trail= ·
-set listchars=eol:¬,tab:▸-,space:·
+" enable search highlighting
+set hlsearch
+" set line break at indent
+set breakindent
 
 " set relative/absolute auto-toggle for line numbers based on Insert
 :augroup numbertoggle
@@ -14,11 +17,20 @@ set listchars=eol:¬,tab:▸-,space:·
 :  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 :augroup END
 
-" enable search highlighting
-set hlsearch
-" set line break at indent
-set breakindent
 
+" +-----------------+
+" | FILE EXLORATION |
+" +-----------------+
+" netrw settings for file/directory exploration
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 25	
+let g:netrw_altv = 1
+let g:netrw_alto = 1 
+" enable line numbering for netrw
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+" set 'ctrl + e' to Lexplore for quickly opening the file explorer
+map <silent> <C-E> :Lexplore<CR>
 
 " split window navigation
 " use ctrl-j; rather than using ctrl-w then j
@@ -33,12 +45,19 @@ vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
 
-" add headers to filetypes
+" +------------------+
+" | FILETYPE HEADERS |
+" +------------------+
+"
 augroup templates
   autocmd! BufNewFile *.sh execute "normal i#!/usr/bin/env bash\r\r"
   autocmd! BufNewFile *.zsh execute "normal i#!/bin/zsh\r\r"
   autocmd! BufNewFile *.plist execute "normal i<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\r<plist version=\"1.0\">\r</plist>"
 augroup END
+
+" +---------+
+" | PLUGINS |
+" +---------+
 
 " auto-install vim-plug 
 " https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
@@ -48,33 +67,33 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" PLUGINS
-" https://github.com/junegunn/vim-plug
-
+" list plugins here between 'call_begin and call_end' 
 call plug#begin()
 
-" List your plugins here
 Plug 'sainnhe/everforest'
 
 call plug#end()
 
-" CONFIGURE EVERFOREST
+" +--------+
+" | THEMES |
+" +--------+
+
+" everforest
 " https://github.com/sainnhe/everforest/blob/master/doc/everforest.txt
 
 " ensure termguicolors are set
-        if has('termguicolors')
-          set termguicolors
-        endif
+if has('termguicolors')
+  set termguicolors
+endif
 
-        " For dark version.
-        set background=dark
+" set background: 'dark', 'light'
+set background=dark
 
-        " Set contrast.
-        " This configuration option should be placed before `colorscheme everforest`.
-        " Available values: 'hard', 'medium'(default), 'soft'
-        let g:everforest_background = 'soft'
+" set contrast: 'hard', 'medium'(default), 'soft'
+" This configuration option should be placed before `colorscheme everforest`.
+let g:everforest_background = 'soft'
 
-        " For better performance
-        let g:everforest_better_performance = 1
+" For better performance
+let g:everforest_better_performance = 1
 
-        colorscheme everforest
+colorscheme everforest
