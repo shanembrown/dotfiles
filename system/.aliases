@@ -51,6 +51,12 @@ alias gaa='git add --all'
 alias gc='git commit'
 alias gp='git push'
 
+# +------+
+# | tmux |
+# +------+
+
+alias tmls='tmux ls'
+
 # +----------+
 # | personal |
 # +----------+
