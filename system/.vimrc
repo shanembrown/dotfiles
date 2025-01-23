@@ -9,6 +9,14 @@ set number
 set hlsearch
 " set line break at indent
 set breakindent
+" enable filetype detection
+filetype on
+" set shift width to 4 spaces
+set shiftwidth=4
+" set tab width to 4 columns
+set tabstop=4
+" use space characters instead of tabs
+set expandtab
 
 " set relative/absolute auto-toggle for line numbers based on Insert
 :augroup numbertoggle
