@@ -17,6 +17,14 @@ set shiftwidth=4
 set tabstop=4
 " use space characters instead of tabs
 set expandtab
+" while searching through a file, incrementally highlight matching
+set incsearch
+" ignore capital letters during search
+set ignorecase
+" override ignorecase if searching for capital letters
+set smartcase
+" show matching words during a search
+set showmatch
 
 " set relative/absolute auto-toggle for line numbers based on Insert
 :augroup numbertoggle
