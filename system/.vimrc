@@ -1,52 +1,71 @@
 " +----------------+
 " | BASIC SETTINGS | 
 " +----------------+
-" enable syntax highlighting
-syntax enable
-" enable line numbers
-set number
-" enable search highlighting
-set hlsearch
-" set line break at indent
-set breakindent
-" enable filetype detection
-filetype on
-" set shift width to 4 spaces
-set shiftwidth=4
-" set tab width to 4 columns
-set tabstop=4
-" use space characters instead of tabs
-set expandtab
-" while searching through a file, incrementally highlight matching
-set incsearch
-" ignore capital letters during search
-set ignorecase
-" override ignorecase if searching for capital letters
-set smartcase
-" show matching words during a search
-set showmatch
+syntax enable       " enable syntax highlighting
+filetype on         " enable filetype detection
+filetype plugin indent on         " enable filetype detection
 
-" set relative/absolute auto-toggle for line numbers based on Insert
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-:  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
-:augroup END
+set number          " set absolute and relative line numbers to enable hybrid line numbers
+set relativenumber  " set absolute and relative line numbers to enable hybrid line numbers
+
+set signcolumn=yes
+
+set colorcolumn=80
+
+set tabstop=4       " set tab width to 4 columns
+set softtabstop=4   " set tab width to 4 columns
+set shiftwidth=4    " set shift width to 4 spaces
+set expandtab       " use space characters instead of tabs
+
+set smartindent     " set smart indent true
+set breakindent     " set line break at indent
+
+set hlsearch        " enable search highlighting
+set incsearch       " while searching through a file, incrementally highlight matching
+set ignorecase      " ignore capital letters during search
+set smartcase       " override ignorecase if searching for capital letters
+set showmatch       " show matching words during a search
+
+
+" +----------------+
+" | REMAP SETTINGS |
+" +----------------+
+" set 'space' as the mapleader
+nnoremap <SPACE> <Nop> 
+let mapleader = " "
+
+" set leader+pv to exit to netrw rather than the default ':Ex'
+nnoremap <leader>pv :Ex<CR>
+
+" set CTRL+D to always center on the screen 
+nnoremap <C-d> <C-d>zz
+" set CTRL+U to always center on the screen 
+nnoremap <C-u> <C-u>zz
+
+nnoremap <leader>js :%!jq
+
+" +----------------+
+" | NETRW SETTINGS |
+" +----------------+
+let g:netrw_banner=0 " remove the banner
+let g:netrw_winsize=25 " set the winsize to 25 column width
+let g:netrw_browse_split=0
+
 
 
 " +-----------------+
 " | FILE EXLORATION |
 " +-----------------+
 " netrw settings for file/directory exploration
-let g:netrw_banner = 0
-let g:netrw_browse_split = 4
-let g:netrw_winsize = 25	
-let g:netrw_altv = 1
-let g:netrw_alto = 1 
+" let g:netrw_banner = 0
+" let g:netrw_browse_split = 4
+" let g:netrw_winsize = 25	
+" let g:netrw_altv = 1
+" let g:netrw_alto = 1 
 " enable line numbering for netrw
-let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+" let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 " set 'ctrl + e' to Lexplore for quickly opening the file explorer
-map <silent> <C-E> :Lexplore<CR>
+" map <silent> <C-E> :Lexplore<CR>
 
 " split window navigation
 " use ctrl-j; rather than using ctrl-w then j
@@ -75,20 +94,18 @@ augroup END
 " | PLUGINS |
 " +---------+
 
-" auto-install vim-plug 
-" https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
+" https://github.com/junegunn/vim-plug
 " list plugins here between 'call_begin and call_end' 
 call plug#begin()
 
 Plug 'sainnhe/everforest'
 
 call plug#end()
+
+" :PlugInstall to install the plugins
+" :PlugUpdate to install or update the plugins
+" :PlugDiff to review the changes from the last update
+" :PlugClean to remove plugins no longer in the list
 
 " +--------+
 " | THEMES |
