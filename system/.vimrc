@@ -90,6 +90,8 @@ augroup templates
   autocmd! BufNewFile *.plist execute "normal i<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\r<plist version=\"1.0\">\r</plist>"
 augroup END
 
+let g:is_bash=1
+
 " +---------+
 " | PLUGINS |
 " +---------+
