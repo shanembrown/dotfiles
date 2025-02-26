@@ -99,6 +99,7 @@ augroup END
 call plug#begin()
 
 Plug 'sainnhe/everforest'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
