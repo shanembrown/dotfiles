@@ -18,6 +18,7 @@ apps=(
   "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/"
   "/System/Applications/System Settings.app"
   "/System/Applications/Utilities/Terminal.app"
+  "/Applications/iTerm.app"
   "/Applications/Self Service.app"
   "/Applications/Self Service+.app"
 )
