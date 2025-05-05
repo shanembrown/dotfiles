@@ -19,6 +19,7 @@ apps=(
   "/System/Applications/System Settings.app"
   "/System/Applications/Utilities/Terminal.app"
   "/Applications/Self Service.app"
+  "/Applications/Self Service+.app"
 )
 
 # loop through apps to add them to the dock
