@@ -97,11 +97,19 @@ let g:is_bash=1
 " +---------+
 
 " https://github.com/junegunn/vim-plug
+" Automatic installation of vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " list plugins here between 'call_begin and call_end' 
 call plug#begin()
 
-Plug 'sainnhe/everforest'
-Plug 'sheerun/vim-polyglot'
+Plug 'sainnhe/everforest'         " color theme
+Plug 'sheerun/vim-polyglot'       " syntax highlighting
+Plug 'darfink/vim-plist'          " property list (.plist) file support
 
 call plug#end()
 
