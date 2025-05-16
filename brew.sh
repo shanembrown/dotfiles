@@ -34,6 +34,8 @@ brew cleanup
 packages=(
   "dockutil"
   "neovim"
+  "fzf"
+  "bat"
 )
 
 # Loop over the array to install each package.
