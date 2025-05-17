@@ -52,6 +52,7 @@ alias ga='git add'
 alias gaa='git add --all'
 alias gc='git commit'
 alias gp='git push'
+alias gco='git checkout'
 
 # +------+
 # | tmux |
@@ -92,3 +93,9 @@ alias work_mode='/usr/libexec/PlistBuddy -c "set AllSpacesAndDisplays:Desktop:Co
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 alias szsh='source ~/.zshrc'
+
+# +-----+
+# | fzf |
+# +-----+
+
+alias fe="fzf --preview 'bat --style=numbers --color=always --line-range=:500 {}' --bind 'enter:execute(vim {})'"
