@@ -33,7 +33,6 @@ nnoremap <leader>rc :source ~/.vimrc<CR>
 " +------------+
 " | STATUSLINE |
 " +------------+
-
 set laststatus=2
 set statusline=%F%m%r%h%w     " Full path, modified flag, readonly, help, preview
 set statusline+=%=            " Right align
@@ -69,19 +68,6 @@ let g:netrw_browse_split=0
 " +-----------------+
 " | FILE EXLORATION |
 " +-----------------+
-" netrw settings for file/directory exploration
-" let g:netrw_banner = 0
-" let g:netrw_browse_split = 4
-" let g:netrw_winsize = 25	
-" let g:netrw_altv = 1
-" let g:netrw_alto = 1 
-" enable line numbering for netrw
-" let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
-" set 'ctrl + e' to Lexplore for quickly opening the file explorer
-" map <silent> <C-E> :Lexplore<CR>
-
-" split window navigation
-" use ctrl-j; rather than using ctrl-w then j
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -96,7 +82,6 @@ vnoremap <C-p> "+gP
 " +------------------+
 " | FILETYPE HEADERS |
 " +------------------+
-"
 augroup templates
   autocmd! BufNewFile *.sh execute "normal i#!/usr/bin/env bash\r\r"
   autocmd! BufNewFile *.zsh execute "normal i#!/bin/zsh\r\r"
@@ -108,7 +93,6 @@ let g:is_bash=1
 " +---------------+
 " | GLOW MARKDOWN |
 " +---------------+
-
 function! MarkdownVerticalPreview()
     write
     let filepath = expand('%:p')
@@ -127,7 +111,6 @@ nnoremap <leader>md :call MarkdownVerticalPreview()<CR>
 " +---------+
 " | PLUGINS |
 " +---------+
-
 " https://github.com/junegunn/vim-plug
 " Automatic installation of vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -142,6 +125,7 @@ call plug#begin()
 Plug 'sainnhe/everforest'         " color theme
 Plug 'sheerun/vim-polyglot'       " syntax highlighting
 Plug 'darfink/vim-plist'          " property list (.plist) file support
+Plug 'ycm-core/YouCompleteMe'     " code completion
 
 call plug#end()
 
@@ -153,7 +137,6 @@ call plug#end()
 " +--------+
 " | THEMES |
 " +--------+
-
 " everforest
 " https://github.com/sainnhe/everforest/blob/master/doc/everforest.txt
 
@@ -173,3 +156,22 @@ let g:everforest_background = 'soft'
 let g:everforest_better_performance = 1
 
 colorscheme everforest
+
+
+" +-----+
+" | YCM |
+" +-----+
+" YouCompleteMe settings
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+
+" Don't ask about loading .ycm_extra_conf.py files
+let g:ycm_confirm_extra_conf = 0
+
+" Useful keybindings
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>jr :YcmCompleter GoToReference<CR>
+nnoremap <leader>jt :YcmCompleter GetType<CR>
+nnoremap <leader>jf :YcmCompleter FixIt<CR>
