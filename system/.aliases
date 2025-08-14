@@ -58,7 +58,12 @@ alias gco='git checkout'
 # | tmux |
 # +------+
 
-alias tmls='tmux ls'
+alias tm='tmux'
+alias tma='tmux attach'
+alias tmls='tmux list-sessions'
+alias tmks='tmux kill-session'
+alias tmn='tmux new-session'
+
 
 # +----------+
 # | personal |

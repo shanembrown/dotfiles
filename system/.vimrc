@@ -26,6 +26,19 @@ set ignorecase      " ignore capital letters during search
 set smartcase       " override ignorecase if searching for capital letters
 set showmatch       " show matching words during a search
 
+" Use <leader>rc for "reload config"
+nnoremap <leader>rc :source ~/.vimrc<CR>
+
+
+" +------------+
+" | STATUSLINE |
+" +------------+
+
+set laststatus=2
+set statusline=%F%m%r%h%w     " Full path, modified flag, readonly, help, preview
+set statusline+=%=            " Right align
+set statusline+=\ %l          " Line
+set statusline+=\ [%L]        " Total lines
 
 " +----------------+
 " | REMAP SETTINGS |
@@ -91,6 +104,25 @@ augroup templates
 augroup END
 
 let g:is_bash=1
+
+" +---------------+
+" | GLOW MARKDOWN |
+" +---------------+
+
+function! MarkdownVerticalPreview()
+    write
+    let filepath = expand('%:p')
+    execute 'tabnew | terminal ++curwin glow --pager "' . filepath . '"'
+    setlocal nonumber norelativenumber
+    setlocal laststatus=0 noruler noshowcmd
+    " Hide terminal-specific UI elements
+    setlocal nomodeline
+    setlocal bufhidden=wipe
+    stopinsert
+    normal! gg
+endfunction
+
+nnoremap <leader>md :call MarkdownVerticalPreview()<CR>
 
 " +---------+
 " | PLUGINS |
