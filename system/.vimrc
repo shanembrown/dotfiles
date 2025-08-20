@@ -9,7 +9,6 @@ set number                              " set absolute and relative line numbers
 set relativenumber                      " set absolute and relative line numbers to enable hybrid line numbers
 
 set guicursor=                          " set block cursor
-set somethinghere=
 
 set signcolumn=yes
 
