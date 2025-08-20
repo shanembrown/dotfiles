@@ -1,32 +1,35 @@
 " +----------------+
 " | BASIC SETTINGS | 
 " +----------------+
-syntax enable       " enable syntax highlighting
-filetype on         " enable filetype detection
-filetype plugin indent on         " enable filetype detection
+syntax enable                           " enable syntax highlighting
+filetype on                             " enable filetype detection
+filetype plugin indent on               " enable filetype detection
 
-set number          " set absolute and relative line numbers to enable hybrid line numbers
-set relativenumber  " set absolute and relative line numbers to enable hybrid line numbers
+set number                              " set absolute and relative line numbers to enable hybrid line numbers
+set relativenumber                      " set absolute and relative line numbers to enable hybrid line numbers
+
+set guicursor=                          " set block cursor
+set somethinghere=
 
 set signcolumn=yes
 
 set colorcolumn=80
 
-set tabstop=4       " set tab width to 4 columns
-set softtabstop=4   " set tab width to 4 columns
-set shiftwidth=4    " set shift width to 4 spaces
-set expandtab       " use space characters instead of tabs
+set tabstop=4                           " set tab width to 4 columns
+set softtabstop=4                       " set tab width to 4 columns
+set shiftwidth=4                        " set shift width to 4 spaces
+set expandtab                           " use space characters instead of tabs
 
-set smartindent     " set smart indent true
-set breakindent     " set line break at indent
+set smartindent                         " set smart indent true
+set breakindent                         " set line break at indent
 
-set hlsearch        " enable search highlighting
-set incsearch       " while searching through a file, incrementally highlight matching
-set ignorecase      " ignore capital letters during search
-set smartcase       " override ignorecase if searching for capital letters
-set showmatch       " show matching words during a search
+set hlsearch                            " enable search highlighting
+set incsearch                           " while searching through a file, incrementally highlight matching
+set ignorecase                          " ignore capital letters during search
+set smartcase                           " override ignorecase if searching for capital letters
+set showmatch                           " show matching words during a search
 
-" Use <leader>rc for "reload config"
+" Use <leader>rc for 'reload config'
 nnoremap <leader>rc :source ~/.vimrc<CR>
 
 
@@ -34,17 +37,24 @@ nnoremap <leader>rc :source ~/.vimrc<CR>
 " | STATUSLINE |
 " +------------+
 set laststatus=2
-set statusline=%F%m%r%h%w     " Full path, modified flag, readonly, help, preview
-set statusline+=%=            " Right align
-set statusline+=\ %l          " Line
-set statusline+=\ [%L]        " Total lines
+set statusline=%F%m%r%h%w               " full path, modified flag, readonly, help, preview
+set statusline+=%=                      " right align
+set statusline+=\ %l                    " line
+set statusline+=\ [%L]                  " total lines
 
 " +----------------+
 " | REMAP SETTINGS |
 " +----------------+
 " set 'space' as the mapleader
 nnoremap <SPACE> <Nop> 
-let mapleader = " "
+let mapleader = "                       " 
+
+" keep the cursor at the beginning of the line when using 'J' to join a line
+nnoremap J mzJ`z
+
+" move selected lines up/down in Visual mode
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 " set leader+pv to exit to netrw rather than the default ':Ex'
 nnoremap <leader>pv :Ex<CR>
@@ -54,13 +64,14 @@ nnoremap <C-d> <C-d>zz
 " set CTRL+U to always center on the screen 
 nnoremap <C-u> <C-u>zz
 
+" set leader+js to prettify JSON
 nnoremap <leader>js :%!jq
 
 " +----------------+
 " | NETRW SETTINGS |
 " +----------------+
-let g:netrw_banner=0 " remove the banner
-let g:netrw_winsize=25 " set the winsize to 25 column width
+let g:netrw_banner=0                    " remove the banner
+let g:netrw_winsize=25                  " set the winsize to 25 column width
 let g:netrw_browse_split=0
 
 
@@ -74,10 +85,10 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " add CTRL+Y and CTRL+P to copy/paste externally
-nnoremap <C-y> "+y
-vnoremap <C-y> "+y
-nnoremap <C-p> "+gP
-vnoremap <C-p> "+gP
+nnoremap <C-y>                          " +y
+vnoremap <C-y>                          " +y
+nnoremap <C-p>                          " +gP
+vnoremap <C-p>                          " +gP
 
 " +------------------+
 " | FILETYPE HEADERS |
@@ -122,10 +133,10 @@ endif
 " list plugins here between 'call_begin and call_end' 
 call plug#begin()
 
-Plug 'sainnhe/everforest'         " color theme
-Plug 'sheerun/vim-polyglot'       " syntax highlighting
-Plug 'darfink/vim-plist'          " property list (.plist) file support
-Plug 'ycm-core/YouCompleteMe'     " code completion
+Plug 'sainnhe/everforest'               " color theme
+Plug 'sheerun/vim-polyglot'             " syntax highlighting
+Plug 'darfink/vim-plist'                " property list (.plist) file support
+Plug 'ycm-core/YouCompleteMe'           " code completion
 
 call plug#end()
 
