@@ -9,9 +9,11 @@ set number                              " set absolute and relative line numbers
 set relativenumber                      " set absolute and relative line numbers to enable hybrid line numbers
 
 set guicursor=                          " set block cursor
+let &t_SI = "\e[2 q"                    " insert mode - block
+let &t_EI = "\e[2 q"                    " normal mode - block
+let &t_SR = "\e[2 q"                    " replace mode - block
 
-set signcolumn=yes
-
+set signcolumn=yes                      " display the column bar at 80 width
 set colorcolumn=80
 
 set tabstop=4                           " set tab width to 4 columns
@@ -31,6 +33,8 @@ set showmatch                           " show matching words during a search
 " Use <leader>rc for 'reload config'
 nnoremap <leader>rc :source ~/.vimrc<CR>
 
+" enable spell check for text (.txt) and markdown (.md) files
+autocmd BufRead,BufNewFile *.txt,*.md setlocal spell spelllang=en_us
 
 " +------------+
 " | STATUSLINE |
@@ -167,6 +171,11 @@ let g:everforest_better_performance = 1
 
 colorscheme everforest
 
+" override spell highlighting
+highlight SpellBad cterm=underline ctermfg=167 gui=underline guifg=#e67e80
+highlight SpellCap cterm=underline ctermfg=214 gui=underline guifg=#dbbc7f
+highlight SpellRare cterm=underline ctermfg=175 gui=underline guifg=#d699b6
+highlight SpellLocal cterm=underline ctermfg=109 gui=underline guifg=#83c092
 
 " +-----+
 " | YCM |
