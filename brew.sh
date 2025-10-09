@@ -49,7 +49,6 @@ done
 
 # Define an array of applications to install using Homebrew cask.
 apps=(
-  "sublime-text"
   "rectangle"
   "suspicious-package"
   "cirruslabs/cli/tart"
