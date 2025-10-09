@@ -33,7 +33,6 @@ brew cleanup
 # Define an array of packages to install using Homebrew.
 packages=(
   "dockutil"
-  "neovim"
   "fzf"
   "bat"
 )
@@ -53,7 +52,6 @@ apps=(
   "sublime-text"
   "rectangle"
   "suspicious-package"
-  "postman"
   "cirruslabs/cli/tart"
   "iterm2"
 )
