@@ -57,6 +57,8 @@ alias gpull='git pull'
 alias gmerge='git merge'
 alias gco='git checkout'
 alias gbl='git branch --list'
+alias gbd='git branch -d'
+alias gco='git checkout'
 
 # +------+
 # | tmux |
