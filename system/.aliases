@@ -59,6 +59,7 @@ alias gco='git checkout'
 alias gbl='git branch --list'
 alias gbd='git branch -d'
 alias gco='git checkout'
+alias glog='git log --graph --pretty=oneline --abbrev-commit'
 
 # +------+
 # | tmux |
