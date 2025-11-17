@@ -61,6 +61,14 @@ alias gbd='git branch -d'
 alias gco='git checkout'
 alias glog='git log --graph --pretty=oneline --abbrev-commit'
 
+
+# +-----------+
+# | terraform |
+# +-----------+
+
+alias tf='terraform'
+
+
 # +------+
 # | tmux |
 # +------+
