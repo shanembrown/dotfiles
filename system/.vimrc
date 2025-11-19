@@ -136,10 +136,12 @@ endif
 " list plugins here between 'call_begin and call_end' 
 call plug#begin()
 
-Plug 'sainnhe/everforest'               " color theme
-Plug 'sheerun/vim-polyglot'             " syntax highlighting
-Plug 'darfink/vim-plist'                " property list (.plist) file support
-Plug 'ycm-core/YouCompleteMe'           " code completion
+Plug 'sainnhe/everforest'                               " color theme
+Plug 'sheerun/vim-polyglot'                             " syntax highlighting
+Plug 'darfink/vim-plist'                                " property list (.plist) file support
+Plug 'ycm-core/YouCompleteMe'                           " code completion
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fzf in vim
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
