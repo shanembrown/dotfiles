@@ -119,3 +119,4 @@ alias szsh='source ~/.zshrc'
 # +-----+
 
 alias fe="fzf --preview 'bat --style=numbers --color=always --line-range=:500 {}' --bind 'enter:execute(vim {})'"
+alias sd="cd ~ && cd \$(find * -type d | fzf)"

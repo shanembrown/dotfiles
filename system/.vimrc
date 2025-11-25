@@ -30,9 +30,6 @@ set ignorecase                          " ignore capital letters during search
 set smartcase                           " override ignorecase if searching for capital letters
 set showmatch                           " show matching words during a search
 
-" Use <leader>rc for 'reload config'
-nnoremap <leader>rc :source ~/.vimrc<CR>
-
 " enable spell check for text (.txt) and markdown (.md) files
 autocmd BufRead,BufNewFile *.txt,*.md setlocal spell spelllang=en_us
 
@@ -50,7 +47,10 @@ set statusline+=\ [%L]                  " total lines
 " +----------------+
 " set 'space' as the mapleader
 nnoremap <SPACE> <Nop> 
-let mapleader = "                       " 
+let mapleader = " " 
+
+" Use <leader>rc for 'reload config'
+nnoremap <leader>rc :source ~/.vimrc<CR>
 
 " keep the cursor at the beginning of the line when using 'J' to join a line
 nnoremap J mzJ`z
@@ -69,6 +69,12 @@ nnoremap <C-u> <C-u>zz
 
 " set leader+js to prettify JSON
 nnoremap <leader>js :%!jq
+
+" set leader+f to fzf (:GFiles)
+nnoremap <leader>f :GFiles<Enter>
+
+" set leader+b to fzf (:Buffers)
+nnoremap <leader>b :Buffers<Enter>
 
 " +----------------+
 " | NETRW SETTINGS |
