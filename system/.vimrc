@@ -139,7 +139,6 @@ call plug#begin()
 Plug 'sainnhe/everforest'               " color theme
 Plug 'sheerun/vim-polyglot'             " syntax highlighting
 Plug 'darfink/vim-plist'                " property list (.plist) file support
-Plug 'ycm-core/YouCompleteMe'           " code completion
 
 call plug#end()
 

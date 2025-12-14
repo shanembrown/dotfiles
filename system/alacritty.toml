@@ -1,0 +1,9 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/everforest_dark.toml"
+]
+
+[window]
+opacity = 0.9
+blur= true
+
