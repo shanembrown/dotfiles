@@ -1,58 +1,53 @@
-set termguicolors
-colorscheme catppuccin_frappe
+" vimrc
+" -- general -------------------------------------------------------------------
 
-" +----------------+
-" | BASIC SETTINGS | 
-" +----------------+
-syntax enable                           " enable syntax highlighting
-filetype on                             " enable filetype detection
-filetype plugin indent on               " enable filetype detection
+syntax enable                   " enable syntax highlighting
+filetype on                     " enable filetype detection
+filetype plugin indent on       " enable filetype detection
 
-set number                              " set absolute and relative line numbers to enable hybrid line numbers
-set relativenumber                      " set absolute and relative line numbers to enable hybrid line numbers
+set number                      " set absolute and relative line numbers to enable hybrid line numbers
+set relativenumber              " set absolute and relative line numbers to enable hybrid line numbers
 
-set guicursor=                          " set block cursor
-let &t_SI = "\e[2 q"                    " insert mode - block
-let &t_EI = "\e[2 q"                    " normal mode - block
-let &t_SR = "\e[2 q"                    " replace mode - block
+set guicursor=                  " set block cursor
+let &t_SI = "\e[2 q"            " insert mode - block
+let &t_EI = "\e[2 q"            " normal mode - block
+let &t_SR = "\e[2 q"            " replace mode - block
 
-set signcolumn=yes                      " display the column bar at 80 width
+set signcolumn=yes              " display the column bar at 80 width
 set colorcolumn=80
 
-set tabstop=4                           " set tab width to 4 columns
-set softtabstop=4                       " set tab width to 4 columns
-set shiftwidth=4                        " set shift width to 4 spaces
-set expandtab                           " use space characters instead of tabs
+set tabstop=4                   " set tab width to 4 columns
+set softtabstop=4               " set tab width to 4 columns
+set shiftwidth=4                " set shift width to 4 spaces
+set expandtab                   " use space characters instead of tabs
 
-set smartindent                         " set smart indent true
-set breakindent                         " set line break at indent
+set smartindent                 " set smart indent true
+set breakindent                 " set line break at indent
 
-set hlsearch                            " enable search highlighting
-set incsearch                           " while searching through a file, incrementally highlight matching
-set ignorecase                          " ignore capital letters during search
-set smartcase                           " override ignorecase if searching for capital letters
-set showmatch                           " show matching words during a search
+set hlsearch                    " enable search highlighting
+set incsearch                   " while searching through a file, incrementally highlight matching
+set ignorecase                  " ignore capital letters during search
+set smartcase                   " override ignorecase if searching for capital letters
+set showmatch                   " show matching words during a search
 
 " enable spell check for text (.txt) and markdown (.md) files
 autocmd BufRead,BufNewFile *.txt,*.md setlocal spell spelllang=en_us
 
-" +------------+
-" | STATUSLINE |
-" +------------+
-set laststatus=2
-set statusline=%F%m%r%h%w               " full path, modified flag, readonly, help, preview
-set statusline+=%=                      " right align
-set statusline+=\ %l                    " line
-set statusline+=\ [%L]                  " total lines
+" -- statusline ---------------------------------------------------------------
 
-" +----------------+
-" | REMAP SETTINGS |
-" +----------------+
+set laststatus=2
+set statusline=%F%m%r%h%w       " full path, modified flag, readonly, help, preview
+set statusline+=%=              " right align
+set statusline+=\ %l            " line
+set statusline+=\ [%L]          " total lines
+
+" -- remap ---------------------------------------------------------------------
+
 " set 'space' as the mapleader
 nnoremap <SPACE> <Nop> 
 let mapleader = " " 
 
-" Use <leader>rc for 'reload config'
+" Use 'rc' for 'reload config'
 nnoremap <leader>rc :source ~/.vimrc<CR>
 
 " keep the cursor at the beginning of the line when using 'J' to join a line
@@ -62,45 +57,50 @@ nnoremap J mzJ`z
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-" set leader+pv to exit to netrw rather than the default ':Ex'
+" set 'pv' to exit to netrw
 nnoremap <leader>pv :Ex<CR>
 
-" set CTRL+D to always center on the screen 
+" set 'CTRL+D to always center on the screen 
 nnoremap <C-d> <C-d>zz
-" set CTRL+U to always center on the screen 
 nnoremap <C-u> <C-u>zz
 
-" set leader+js to prettify JSON
+" set 'js' to prettify JSON
 nnoremap <leader>js :%!jq
 
-" set leader+f to fzf (:GFiles)
+" set 'f' to fzf (:GFiles)
 nnoremap <leader>f :GFiles<Enter>
 
-" set leader+b to fzf (:Buffers)
+" set 'b' to fzf (:Buffers)
 nnoremap <leader>b :Buffers<Enter>
 
-" +----------------+
-" | NETRW SETTINGS |
-" +----------------+
+" -- netrw ---------------------------------------------------------------------
+
 let g:netrw_banner=0                    " remove the banner
 let g:netrw_winsize=25                  " set the winsize to 25 column width
 let g:netrw_browse_split=0
 
-
-
-" +-----------------+
-" | FILE EXLORATION |
-" +-----------------+
+" navigate splits using CTRL+[H, J, K, L]
+nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+
+" Use system clipboard
+set clipboard=unnamedplus
+
+vnoremap <C-y> "+y
+" Copy with Ctrl+Y
+nnoremap <C-y> "+yy
+
+" Paste with Ctrl+P
+nnoremap <C-p> "+p
+inoremap <C-p> <C-r>+
 
 " add CTRL+Y and CTRL+P to copy/paste externally
-nnoremap <C-y>                          " +y
-vnoremap <C-y>                          " +y
-nnoremap <C-p>                          " +gP
-vnoremap <C-p>                          " +gP
+"nnoremap <C-y>                          " +y
+"vnoremap <C-y>                          " +y
+"nnoremap <C-p>                          " +gP
+"vnoremap <C-p>                          " +gP
 
 " +------------------+
 " | FILETYPE HEADERS |
@@ -131,9 +131,7 @@ endfunction
 
 nnoremap <leader>md :call MarkdownVerticalPreview()<CR>
 
-" +---------+
-" | PLUGINS |
-" +---------+
+" -- plugins -------------------------------------------------------------------
 " https://github.com/junegunn/vim-plug
 " Automatic installation of vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -145,62 +143,21 @@ endif
 " list plugins here between 'call_begin and call_end' 
 call plug#begin()
 
-"Plug 'sainnhe/everforest'               " color theme
-Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-Plug 'sheerun/vim-polyglot'             " syntax highlighting
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }           " colorscheme
+Plug 'sheerun/vim-polyglot'                             " syntax highlighting
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fzf in vim
 Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
-" :PlugInstall to install the plugins
-" :PlugUpdate to install or update the plugins
+" USAGE
+" :PlugInstall - install the plugins
+" :PlugUpdate install or update the plugins
 " :PlugDiff to review the changes from the last update
 " :PlugClean to remove plugins no longer in the list
 
-"" +--------+
-"" | THEMES |
-"" +--------+
-"" everforest
-"" https://github.com/sainnhe/everforest/blob/master/doc/everforest.txt
-"
-"" ensure termguicolors are set
-"if has('termguicolors')
-"  set termguicolors
-"endif
-"
-"" set background: 'dark', 'light'
-"set background=dark
-"
-"" set contrast: 'hard', 'medium'(default), 'soft'
-"" This configuration option should be placed before `colorscheme everforest`.
-"let g:everforest_background = 'soft'
-"
-"" For better performance
-"let g:everforest_better_performance = 1
-"
-"colorscheme everforest
-"
-"" override spell highlighting
-"highlight SpellBad cterm=underline ctermfg=167 gui=underline guifg=#e67e80
-"highlight SpellCap cterm=underline ctermfg=214 gui=underline guifg=#dbbc7f
-"highlight SpellRare cterm=underline ctermfg=175 gui=underline guifg=#d699b6
-"highlight SpellLocal cterm=underline ctermfg=109 gui=underline guifg=#83c092
+" -- themes --------------------------------------------------------------------
+" ensure colors are set
+set termguicolors
 
-" +-----+
-" | YCM |
-" +-----+
-" YouCompleteMe settings
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
-
-" Don't ask about loading .ycm_extra_conf.py files
-let g:ycm_confirm_extra_conf = 0
-
-" Useful keybindings
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>jr :YcmCompleter GoToReference<CR>
-nnoremap <leader>jt :YcmCompleter GetType<CR>
-nnoremap <leader>jf :YcmCompleter FixIt<CR>
+colorscheme catppuccin_frappe
