@@ -1,3 +1,6 @@
+set termguicolors
+colorscheme catppuccin_frappe
+
 " +----------------+
 " | BASIC SETTINGS | 
 " +----------------+
@@ -142,7 +145,8 @@ endif
 " list plugins here between 'call_begin and call_end' 
 call plug#begin()
 
-Plug 'sainnhe/everforest'               " color theme
+"Plug 'sainnhe/everforest'               " color theme
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'sheerun/vim-polyglot'             " syntax highlighting
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fzf in vim
 Plug 'junegunn/fzf.vim'
@@ -154,34 +158,34 @@ call plug#end()
 " :PlugDiff to review the changes from the last update
 " :PlugClean to remove plugins no longer in the list
 
-" +--------+
-" | THEMES |
-" +--------+
-" everforest
-" https://github.com/sainnhe/everforest/blob/master/doc/everforest.txt
-
-" ensure termguicolors are set
-if has('termguicolors')
-  set termguicolors
-endif
-
-" set background: 'dark', 'light'
-set background=dark
-
-" set contrast: 'hard', 'medium'(default), 'soft'
-" This configuration option should be placed before `colorscheme everforest`.
-let g:everforest_background = 'soft'
-
-" For better performance
-let g:everforest_better_performance = 1
-
-colorscheme everforest
-
-" override spell highlighting
-highlight SpellBad cterm=underline ctermfg=167 gui=underline guifg=#e67e80
-highlight SpellCap cterm=underline ctermfg=214 gui=underline guifg=#dbbc7f
-highlight SpellRare cterm=underline ctermfg=175 gui=underline guifg=#d699b6
-highlight SpellLocal cterm=underline ctermfg=109 gui=underline guifg=#83c092
+"" +--------+
+"" | THEMES |
+"" +--------+
+"" everforest
+"" https://github.com/sainnhe/everforest/blob/master/doc/everforest.txt
+"
+"" ensure termguicolors are set
+"if has('termguicolors')
+"  set termguicolors
+"endif
+"
+"" set background: 'dark', 'light'
+"set background=dark
+"
+"" set contrast: 'hard', 'medium'(default), 'soft'
+"" This configuration option should be placed before `colorscheme everforest`.
+"let g:everforest_background = 'soft'
+"
+"" For better performance
+"let g:everforest_better_performance = 1
+"
+"colorscheme everforest
+"
+"" override spell highlighting
+"highlight SpellBad cterm=underline ctermfg=167 gui=underline guifg=#e67e80
+"highlight SpellCap cterm=underline ctermfg=214 gui=underline guifg=#dbbc7f
+"highlight SpellRare cterm=underline ctermfg=175 gui=underline guifg=#d699b6
+"highlight SpellLocal cterm=underline ctermfg=109 gui=underline guifg=#83c092
 
 " +-----+
 " | YCM |

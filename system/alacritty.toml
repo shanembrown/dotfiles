@@ -3,21 +3,21 @@
 
 [general]
 import = [
-    "~/.config/alacritty/themes/themes/everforest_dark.toml"
+    "~/.config/alacritty/themes/themes/catppuccin_frappe.toml"
 ]
 
 [window]
-opacity = 0.9
-blur= true
+#opacity = 0.9
+#blur= true
 
 padding.x = 5
 padding.y = 5
 
-decorations = "Full"
-decorations_theme_variant = "Dark"
+#decorations = "Full"
+#decorations_theme_variant = "Dark"
 
 [font]
-size = 14
+size = 17
 
 normal  = {family = "SF Mono", style = "Regular" }
 bold    = {family = "SF Mono", style = "Bold" }
