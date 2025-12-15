@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 
-# +------------+
-# | NAVIGATION |
-# +------------+
+# -- navigation ----------------------------------------------------------------
 
 setopt AUTO_CD              # Go to folder path without using cd
 
@@ -19,9 +17,7 @@ zstyle ':completion:*' format '%B%F{blue}%d%f%b'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:default' menu select=2
 
-# +---------+
-# | HISTORY |
-# +---------+
+# -- history -------------------------------------------------------------------
 
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
 setopt SHARE_HISTORY             # Share history between all sessions.
@@ -33,21 +29,15 @@ setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
 
-# +---------+
-# | ALIASES |
-# +---------+
+# -- aliases -------------------------------------------------------------------
 
 source $HOME/.aliases
 
-# +-----------+
-# | FUNCTIONS |
-# +-----------+
+# -- functions -----------------------------------------------------------------
 
 source $HOME/.functions
 
-# +--------+
-# | PROMPT |
-# +--------+
+# -- prompt --------------------------------------------------------------------
 
 # https://git-prompt-kit.olets.dev
 set_prompt_vars() {
@@ -78,9 +68,7 @@ PROMPT+="%(2V.%F{%2v}.)%1v%f%(1V. .)"
 # prompt char
 PROMPT+='%F{%(?.green.red)}%#%f '
 
-# +---------+
-# | VI MODE |
-# +---------+
+# -- vi mode -------------------------------------------------------------------
 
 # enable Vi mode
 bindkey -v
@@ -117,18 +105,14 @@ preexec() { echo -ne '\e[3 q' ;} # Use blinking block cursor for each new prompt
 # 5  ⇒  blinking bar, xterm.
 # 6  ⇒  steady bar, xterm.
 
-# Sublime Text CLI
-# allows use of 'subl' to open files
-# https://www.sublimetext.com/docs/command_line.html 
-export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# +-----------+
-# | Terraform |
-# +-----------+
+# -- terraform -----------------------------------------------------------------
 
 export TF_CLI_ARGS_apply="-parallelism=1"
 
+
+# -- fzf -----------------------------------------------------------------------
+
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
+--color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
+--color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284"
