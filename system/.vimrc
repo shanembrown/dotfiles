@@ -1,12 +1,11 @@
 " vimrc
 " -- general -------------------------------------------------------------------
-
 syntax enable                   " enable syntax highlighting
 filetype on                     " enable filetype detection
 filetype plugin indent on       " enable filetype detection
 
-set number                      " set absolute and relative line numbers to enable hybrid line numbers
 set relativenumber              " set absolute and relative line numbers to enable hybrid line numbers
+set number                      " set absolute and relative line numbers to enable hybrid line numbers
 
 set guicursor=                  " set block cursor
 let &t_SI = "\e[2 q"            " insert mode - block
@@ -30,19 +29,21 @@ set ignorecase                  " ignore capital letters during search
 set smartcase                   " override ignorecase if searching for capital letters
 set showmatch                   " show matching words during a search
 
+set clipboard=unnamedplus       " use system clipboard
+
 " enable spell check for text (.txt) and markdown (.md) files
 autocmd BufRead,BufNewFile *.txt,*.md setlocal spell spelllang=en_us
 
-" -- statusline ---------------------------------------------------------------
 
+" -- statusline ---------------------------------------------------------------
 set laststatus=2
 set statusline=%F%m%r%h%w       " full path, modified flag, readonly, help, preview
 set statusline+=%=              " right align
 set statusline+=\ %l            " line
 set statusline+=\ [%L]          " total lines
 
-" -- remap ---------------------------------------------------------------------
 
+" -- remap ---------------------------------------------------------------------
 " set 'space' as the mapleader
 nnoremap <SPACE> <Nop> 
 let mapleader = " " 
@@ -73,8 +74,23 @@ nnoremap <leader>f :GFiles<Enter>
 " set 'b' to fzf (:Buffers)
 nnoremap <leader>b :Buffers<Enter>
 
-" -- netrw ---------------------------------------------------------------------
+" OS-specific clipboard mappings
+if has('clipboard')
+  " native clipboard support
+  vnoremap <C-y> "+y
+  nnoremap <C-y> "+yy
+  nnoremap <C-p> "+p
+  inoremap <C-p> <C-r>+
+elseif executable('wl-copy')
+  " Wayland clipboard provider
+  vnoremap <C-y> :w !wl-copy<CR><CR>
+  nnoremap <C-y> :.w !wl-copy<CR><CR>
+  nnoremap <C-p> :r !wl-paste<CR>
+  inoremap <C-p> <C-r> =system('wl-paste')<C-R>
+endif
 
+
+" -- netrw ---------------------------------------------------------------------
 let g:netrw_banner=0                    " remove the banner
 let g:netrw_winsize=25                  " set the winsize to 25 column width
 let g:netrw_browse_split=0
@@ -85,26 +101,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 
-" Use system clipboard
-set clipboard=unnamedplus
 
-vnoremap <C-y> "+y
-" Copy with Ctrl+Y
-nnoremap <C-y> "+yy
-
-" Paste with Ctrl+P
-nnoremap <C-p> "+p
-inoremap <C-p> <C-r>+
-
-" add CTRL+Y and CTRL+P to copy/paste externally
-"nnoremap <C-y>                          " +y
-"vnoremap <C-y>                          " +y
-"nnoremap <C-p>                          " +gP
-"vnoremap <C-p>                          " +gP
-
-" +------------------+
-" | FILETYPE HEADERS |
-" +------------------+
+" filetype headers -------------------------------------------------------------
 augroup templates
   autocmd! BufNewFile *.sh execute "normal i#!/usr/bin/env bash\r\r"
   autocmd! BufNewFile *.zsh execute "normal i#!/bin/zsh\r\r"
@@ -113,9 +111,8 @@ augroup END
 
 let g:is_bash=1
 
-" +---------------+
-" | GLOW MARKDOWN |
-" +---------------+
+
+" glow markdown ----------------------------------------------------------------
 function! MarkdownVerticalPreview()
     write
     let filepath = expand('%:p')
