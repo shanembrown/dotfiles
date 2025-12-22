@@ -117,5 +117,9 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
 --color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284"
 
-# -- bat -----
+# -- bat -----------------------------------------------------------------------
 export BAT_CONFIG_PATH="$HOME/.config/bat/bat.conf"
+
+# -- glow ----------------------------------------------------------------------
+
+export GLAMOUR_STYLE="$HOME/.config/glow/catppuccin_frappe.json"
