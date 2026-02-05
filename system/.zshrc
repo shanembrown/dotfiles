@@ -125,3 +125,7 @@ export BAT_CONFIG_PATH="$HOME/.config/bat/bat.conf"
 # -- glow ----------------------------------------------------------------------
 
 export GLAMOUR_STYLE="$HOME/.config/glow/catppuccin_frappe.json"
+export PATH="$HOME/.local/bin:$PATH"
+
+# -- claude --------------------------------------------------------------------
+export PATH="$HOME/.local/bin:$PATH"
