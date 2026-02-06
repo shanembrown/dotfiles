@@ -84,27 +84,9 @@ alias tmn='tmux new-session'
 # | personal |
 # +----------+
 
-alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
+alias icloud='cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs'
 alias iCloud='icloud'
-alias mini='open vnc://192.168.4.163'
-alias sn='python3 ~/Desktop/Scripts/swapPrestage_v1.1.py'
-alias ade='cd /Users/shane.brown/OneDrive\ -\ Jamf/Jamf_Connect_Enrollment_Videos'
-alias demo_mode='/usr/libexec/PlistBuddy -c "set AllSpacesAndDisplays:Desktop:Content:Choices:0:Files:0:relative file:///Users/shane.brown/Resources/demoModeDesktop.png" ~/Library/Application\ Support/com.apple.wallpaper/Store/Index.plist;
-    killall WallpaperAgent;
-    defaults write com.apple.dock autohide -bool true && killall Dock;
-    defaults write ~/Library/Preferences/com.apple.WindowManager.plist StandardHideDesktopIcons -bool TRUE;
-    shortcuts run "Turn DND On";
-    mini;
-    open /Applications/Google\ Chrome.app;
-    rm -rf ~/Downloads/*;'
-
-alias work_mode='/usr/libexec/PlistBuddy -c "set AllSpacesAndDisplays:Desktop:Content:Choices:0:Files:0:relative file:///Users/shane.brown/Resources/defaultDesktop.jpg" ~/Library/Application\ Support/com.apple.wallpaper/Store/Index.plist;
-    killall WallpaperAgent;
-    defaults write com.apple.dock autohide -bool false && killall Dock;
-    defaults write com.apple.menuextra.clock IsAnalog -bool false && killall SystemUIServer;
-    defaults write ~/Library/Preferences/com.apple.WindowManager.plist StandardHideDesktopIcons -bool FALSE;
-    shortcuts run "Turn DND Off"'
-
+alias sn='python3 $HOME/Desktop/Scripts/swapPrestage_v1.1.py'
 
 # +-----+
 # | zsh |
