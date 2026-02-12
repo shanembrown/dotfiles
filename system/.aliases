@@ -5,9 +5,9 @@
 # +----+
 
 alias ls='ls --color=always'
-alias l='ls -lgoh'
+alias l='ls -at1'
 alias ll='ls -lahF'
-alias lc='clear && ll && pwd'
+alias lc='clear && l && pwd'
 alias lt='ls -lgoht'
 
 # +----+
