@@ -89,6 +89,10 @@ elseif executable('wl-copy')
   inoremap <C-p> <C-r> =system('wl-paste')<C-R>
 endif
 
+" insert current YYYY-MM-DD
+nnoremap <leader>9 "=strftime('%Y-%m-%d')<CR>p
+
+
 
 " -- netrw ---------------------------------------------------------------------
 let g:netrw_banner=0                    " remove the banner
@@ -111,6 +115,8 @@ augroup END
 
 let g:is_bash=1
 
+" show linenumbers in netrw
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 " glow markdown ----------------------------------------------------------------
 function! MarkdownVerticalPreview()
