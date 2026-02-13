@@ -7,7 +7,7 @@ function mk() {
 
 # Always list directory contents upon 'cd'
 function cd() {
-  builtin cd $@; ll;
+  builtin cd $@; l;
 }
 
 # show current
