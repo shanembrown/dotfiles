@@ -126,3 +126,6 @@ export BAT_CONFIG_PATH="$HOME/.config/bat/bat.conf"
 
 export GLAMOUR_STYLE="$HOME/.config/glow/catppuccin_frappe.json"
 export PATH="$HOME/.local/bin:$PATH"
+
+# -- zig -----------------------------------------------------------------------
+sed -i 's|/opt/zig-x86_64-linux-0.14.1|/opt/zig|' ~/.zshrc
