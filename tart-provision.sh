@@ -55,6 +55,8 @@ dockutil --remove all --no-restart
 dockutil --add /Applications/Safari.app --no-restart
 dockutil --add "/System/Applications/System Settings.app" --no-restart
 dockutil --add /System/Applications/Utilities/Terminal.app
+dockutil --add "/Volumes/My Shared Files/Shared" --section others --no-restart
+dockutil --add $HOME/Downloads --section others
 echo "Dock configured."
 
 # ---------------------------------------------------------------------------
