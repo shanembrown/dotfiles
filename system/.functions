@@ -1,19 +1,69 @@
 #!/usr/bin/env zsh
 
-# Create a new directory and enter it
+# -- mk ------------------------------------------------------------------------
 function mk() {
   mkdir -p "$@" && cd "$@"
 }
 
-# Always list directory contents upon 'cd'
+# -- cd ------------------------------------------------------------------------
 function cd() {
   builtin cd $@; l;
 }
 
-# show current
-function ahead_behind {
-    curr_branch=$(git rev-parse --abbrev-ref HEAD);
-    curr_remote=$(git config branch.$curr_branch.remote);
-    curr_merge_branch=$(git config branch.$curr_branch.merge | cut -d / -f 3);
-    git rev-list --left-right --count $curr_branch...$curr_remote/$curr_merge_branch | tr -s '\t' '|';
+# -- tart ----------------------------------------------------------------------
+# tnew - Clone, run, and provision a new Tart VM
+#
+# Usage:
+#   tnew <vm-name> [--vanilla] [--no-graphics] [--vnc]
+#
+# Options:
+#   --vanilla      Use the vanilla base image instead of the default base image
+#   --no-graphics  Run headless (no GUI window)
+#   --vnc          Launch with VNC enabled (implies --no-graphics)
+#
+# Examples:
+#   tnew my-test-vm
+#   tnew my-test-vm --vanilla
+#   tnew my-test-vm --no-graphics
+#   tnew my-test-vm --no-graphics --vnc
+#   tnew my-test-vm --vanilla --no-graphics --vnc
+function tnew() {
+  local vm_name="${1:?Usage: tnew <vm-name> [--vanilla] [--no-graphics] [--vnc]}"
+  local image="ghcr.io/cirruslabs/macos-tahoe-base:latest"
+  local no_graphics=false
+  local vnc=false
+
+  shift
+  for arg in "$@"; do
+    case "$arg" in
+      --vanilla)     image="ghcr.io/cirruslabs/macos-tahoe-vanilla:latest" ;;
+      --no-graphics) no_graphics=true ;;
+      --vnc)         vnc=true; no_graphics=true ;;
+    esac
+  done
+
+  tart clone "$image" "$vm_name" || return 1
+
+  local run_args="--dir=Shared:~/tart-shared"
+  $no_graphics && run_args+=" --no-graphics"
+  $vnc         && run_args+=" --vnc"
+
+  tart run "$vm_name" ${=run_args} &
+
+  local ip
+  ip=$(tart ip "$vm_name" --wait 30)
+
+  echo "Waiting for SSH to be ready..."
+  until ssh -q \
+    -o StrictHostKeyChecking=no \
+    -o UserKnownHostsFile=/dev/null \
+    -o ConnectTimeout=2 \
+    admin@"$ip" exit 2>/dev/null; do
+    sleep 2
+  done
+
+  ssh -o StrictHostKeyChecking=no \
+    -o UserKnownHostsFile=/dev/null \
+    admin@"$ip" \
+    'bash /Volumes/My\ Shared\ Files/Shared/scripts/first-boot.sh'
 }

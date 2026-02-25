@@ -1,27 +1,18 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-# +----+
-# | ls |
-# +----+
-
+# -- ls ------------------------------------------------------------------------
 alias ls='ls --color=always'
 alias l='ls -a1'
 alias ll='ls -lahF'
 alias lc='clear && l && pwd'
 alias lt='ls -lgoht'
 
-# +----+
-# | cp |
-# +----+
-
+# -- cp/mv/rm ------------------------------------------------------------------
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
 
-# +----------+
-# | terminal | 
-# +----------+
-
+# -- terminal ------------------------------------------------------------------
 if [[ "$(uname)" == "Darwin" ]]; then   # f: Opens current directory in GUI
   alias f='open -a Finder ./'
 else
@@ -37,25 +28,12 @@ else
   alias pupdate='sudo dnf update'
 fi
 
-# +------+
-# | tart |
-# +------+
-
+# -- tart ----------------------------------------------------------------------
 alias tl='tart list'
 alias tll='tart list --source local'
-alias tn='tart clone ghcr.io/cirruslabs/macos-tahoe-base:latest'
-alias tnv='tart clone ghcr.io/cirruslabs/macos-tahoe-vanilla:latest'
-alias trun='tart run'
-alias trundir='tart run --dir=Shared:~/VMShared'
-alias trunvnc='tart run --no-graphics --vnc'
-alias trundirvnc='tart run --dir=Shared:~/VMShared --no-graphics --vnc'
-alias trunvncdir='trundirvnc'
 alias td='tart delete'
 
-# +-----+
-# | git |
-# +-----+
-
+# -- git -----------------------------------------------------------------------
 alias gs='git status'
 alias ga='git add'
 alias gaa='git add --all'
@@ -68,45 +46,26 @@ alias gbd='git branch -d'
 alias gco='git checkout'
 alias glog='git log --graph --pretty=oneline --abbrev-commit'
 
-
-# +-----------+
-# | terraform |
-# +-----------+
-
+# -- terraform -----------------------------------------------------------------
 alias tf='terraform'
 
-
-# +------+
-# | tmux |
-# +------+
-
+# -- tmux ----------------------------------------------------------------------
 alias tm='tmux'
 alias tma='tmux attach'
 alias tmls='tmux list-sessions'
 alias tmks='tmux kill-session'
 alias tmn='tmux new-session'
 
-
-# +----------+
-# | personal |
-# +----------+
-
+# -- personal ------------------------------------------------------------------
 alias icloud='cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs'
 alias iCloud='icloud'
 alias calls='cd $HOME/Library/CloudStorage/OneDrive-Jamf/se-customer-calls'
-alias sn='python3 $HOME/Desktop/Scripts/swapPrestage_v1.1.py'
 
-# +-----+
-# | zsh |
-# +-----+
-
+# -- zsh -----------------------------------------------------------------------
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 alias szsh='source ~/.zshrc'
 
-# +-----+
-# | fzf |
-# +-----+
-
+# -- fzf -----------------------------------------------------------------------
 alias fe="fzf --preview 'bat --style=numbers --color=always --line-range=:500 {}' --bind 'enter:execute(vim {})'"
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
