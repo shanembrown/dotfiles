@@ -108,12 +108,9 @@ preexec() { echo -ne '\e[3 q' ;} # Use blinking block cursor for each new prompt
 # 6  ⇒  steady bar, xterm.
 
 # -- terraform -----------------------------------------------------------------
-
 export TF_CLI_ARGS_apply="-parallelism=1"
 
-
 # -- fzf -----------------------------------------------------------------------
-
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
 --color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
@@ -123,6 +120,5 @@ export FZF_DEFAULT_OPTS=" \
 export BAT_CONFIG_PATH="$HOME/.config/bat/bat.conf"
 
 # -- glow ----------------------------------------------------------------------
-
 export GLAMOUR_STYLE="$HOME/.config/glow/catppuccin_frappe.json"
 export PATH="$HOME/.local/bin:$PATH"
