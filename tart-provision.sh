@@ -66,7 +66,6 @@ echo "Symlinking dotfiles..."
 ln -sf "/Volumes/My Shared Files/Shared/.zshrc" $HOME/.zshrc
 ln -sf "/Volumes/My Shared Files/Shared/.aliases" $HOME/.aliases
 ln -sf "/Volumes/My Shared Files/Shared/.functions" $HOME/.functions
-source $HOME/.zshrc
 echo "Dotfiles applied."
 
 # ---------------------------------------------------------------------------
