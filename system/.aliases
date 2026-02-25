@@ -32,7 +32,10 @@ fi
 alias tl='tart list'
 alias tll='tart list --source local'
 alias td='tart delete'
-
+alias tsync='cp $HOME/git-personal/dotfiles/tart-provision.sh $HOME/tart-shared/scripts/tart-provision.sh && \
+             cp $HOME/git-personal/dotfiles/system/.zshrc $HOME/tart-shared/.zshrc && \
+             cp $HOME/git-personal/dotfiles/system/.aliases $HOME/tart-shared/.aliases && \
+             cp $HOME/git-personal/dotfiles/system/.functions $HOME/tart-shared/.functions'
 # -- git -----------------------------------------------------------------------
 alias gs='git status'
 alias ga='git add'

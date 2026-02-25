@@ -14,12 +14,13 @@ function cd() {
 # tnew - Clone, run, and provision a new Tart VM
 #
 # Usage:
-#   tnew <vm-name> [--vanilla] [--no-graphics] [--vnc]
+#   tnew <vm-name> [--vanilla] [--no-graphics] [--vnc] [--res <WxH>]
 #
 # Options:
 #   --vanilla      Use the vanilla base image instead of the default base image
 #   --no-graphics  Run headless (no GUI window)
 #   --vnc          Launch with VNC enabled (implies --no-graphics)
+#   --res          Set display resolution (default: 1512x916)
 #
 # Examples:
 #   tnew my-test-vm
@@ -27,43 +28,31 @@ function cd() {
 #   tnew my-test-vm --no-graphics
 #   tnew my-test-vm --no-graphics --vnc
 #   tnew my-test-vm --vanilla --no-graphics --vnc
+#   tnew my-test-vm --res 1920x1080
 function tnew() {
-  local vm_name="${1:?Usage: tnew <vm-name> [--vanilla] [--no-graphics] [--vnc]}"
+  local vm_name="${1:?Usage: tnew <vm-name> [--vanilla] [--no-graphics] [--vnc] [--res <WxH>]}"
   local image="ghcr.io/cirruslabs/macos-tahoe-base:latest"
   local no_graphics=false
   local vnc=false
+  local resolution="1512x916"
 
   shift
-  for arg in "$@"; do
-    case "$arg" in
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
       --vanilla)     image="ghcr.io/cirruslabs/macos-tahoe-vanilla:latest" ;;
       --no-graphics) no_graphics=true ;;
       --vnc)         vnc=true; no_graphics=true ;;
+      --res)         resolution="$2"; shift ;;
     esac
+    shift
   done
 
   tart clone "$image" "$vm_name" || return 1
+  tart set "$vm_name" --display "${resolution}px" --no-display-refit --random-mac --random-serial
 
-  local run_args="--dir=Shared:~/tart-shared"
+  local run_args="--dir=Shared:$HOME/tart-shared"
   $no_graphics && run_args+=" --no-graphics"
   $vnc         && run_args+=" --vnc"
 
   tart run "$vm_name" ${=run_args} &
-
-  local ip
-  ip=$(tart ip "$vm_name" --wait 30)
-
-  echo "Waiting for SSH to be ready..."
-  until ssh -q \
-    -o StrictHostKeyChecking=no \
-    -o UserKnownHostsFile=/dev/null \
-    -o ConnectTimeout=2 \
-    admin@"$ip" exit 2>/dev/null; do
-    sleep 2
-  done
-
-  ssh -o StrictHostKeyChecking=no \
-    -o UserKnownHostsFile=/dev/null \
-    admin@"$ip" \
-    'bash /Volumes/My\ Shared\ Files/Shared/scripts/first-boot.sh'
 }
