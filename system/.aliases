@@ -25,7 +25,7 @@ alias p='python3'
 if [[ "$(uname)" == "Darwin" ]];then    # updates brew or dnf based on system
   alias pupdate='brew update; brew upgrade; brew upgrade --cask; brew cleanup'
 else
-  alias pupdate='sudo dnf update'
+  alias pupdate='sudo dnf update --offline''
 fi
 
 # -- tart ----------------------------------------------------------------------
