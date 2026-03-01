@@ -25,7 +25,7 @@ alias p='python3'
 if [[ "$(uname)" == "Darwin" ]];then    # updates brew or dnf based on system
   alias pupdate='brew update; brew upgrade; brew upgrade --cask; brew cleanup'
 else
-  alias pupdate='sudo dnf update --offline''
+  alias pupdate='sudo dnf update --offline'
 fi
 
 # -- tart ----------------------------------------------------------------------
@@ -63,7 +63,7 @@ alias tmn='tmux new-session'
 alias icloud='cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs'
 alias iCloud='icloud'
 alias calls='cd $HOME/Library/CloudStorage/OneDrive-Jamf/se-customer-calls'
-
+alias apt-trade='env XDG_SESSION_TYPE=x11 /mnt/storage/Applications/awakened-poe-trade.AppImage &>/dev/null &'
 # -- zsh -----------------------------------------------------------------------
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
@@ -71,4 +71,4 @@ alias szsh='source ~/.zshrc'
 
 # -- fzf -----------------------------------------------------------------------
 alias fe="fzf --preview 'bat --style=numbers --color=always --line-range=:500 {}' --bind 'enter:execute(vim {})'"
-alias sd="cd ~ && cd \$(find * -type d | fzf)"
+alias sd='cd ~ && cd \$(find * -type d | fzf)'
