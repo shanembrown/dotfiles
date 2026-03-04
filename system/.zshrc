@@ -120,3 +120,16 @@ export BAT_CONFIG_PATH="$HOME/.config/bat/bat.conf"
 # -- glow ----------------------------------------------------------------------
 export GLAMOUR_STYLE="$HOME/.config/glow/catppuccin_frappe.json"
 export PATH="$HOME/.local/bin:$PATH"
+
+# -- completions ---------------------------------------------------------------
+_tnew() {
+  local -a vms
+  vms=(${(f)"$(tart list --source local | awk 'NR>1 {print $2}')"})
+  _arguments \
+    '1:vm name:(($vms))' \
+    '--vanilla[use vanilla base image]' \
+    '--no-graphics[run headless]' \
+    '--vnc[enable VNC]' \
+    '--res[set resolution]:resolution:'
+}
+compdef _tnew tnew

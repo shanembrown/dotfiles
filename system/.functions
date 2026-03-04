@@ -47,8 +47,12 @@ function tnew() {
     shift
   done
 
-  tart clone "$image" "$vm_name" || return 1
-  tart set "$vm_name" --display "${resolution}px" --no-display-refit --random-mac --random-serial
+  if tart list | grep -q "^local.*\b$vm_name\b"; then
+    echo "VM '$vm_name' already exists, starting..."
+  else
+    tart clone "$image" "$vm_name" || return 1
+    tart set "$vm_name" --display "${resolution}px" --no-display-refit --random-mac --random-serial
+  fi
 
   local run_args="--dir=Shared:$HOME/tart-shared"
   $no_graphics && run_args+=" --no-graphics"
