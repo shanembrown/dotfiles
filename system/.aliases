@@ -62,7 +62,7 @@ alias tmn='tmux new-session'
 # -- personal ------------------------------------------------------------------
 alias icloud='cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs'
 alias iCloud='icloud'
-alias calls='cd $HOME/Library/CloudStorage/OneDrive-Jamf/se-customer-calls'
+alias calls='cd $HOME/Library/CloudStorage/OneDrive-Jamf/claude-cowork/customers'
 alias apt-trade='env XDG_SESSION_TYPE=x11 /mnt/storage/Applications/awakened-poe-trade.AppImage &>/dev/null &'
 # -- zsh -----------------------------------------------------------------------
 alias d='dirs -v'
