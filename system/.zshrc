@@ -127,6 +127,7 @@ _tnew() {
   vms=(${(f)"$(tart list --source local | awk 'NR>1 {print $2}')"})
   _arguments \
     '1:vm name:(($vms))' \
+    '--os[macOS release to clone]:release:(27 golden-gate 26 tahoe 15 sequoia 14 sonoma)' \
     '--vanilla[use vanilla base image]' \
     '--no-graphics[run headless]' \
     '--vnc[enable VNC]' \

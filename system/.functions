@@ -14,24 +14,26 @@ function cd() {
 # tnew - Clone, run, and provision a new Tart VM
 #
 # Usage:
-#   tnew <vm-name> [--vanilla] [--no-graphics] [--vnc] [--res <WxH>]
+#   tnew <vm-name> [--os <ver>] [--vanilla] [--no-graphics] [--vnc] [--res <WxH>]
 #
 # Options:
-#   --vanilla      Use the vanilla base image instead of the default base image
+#   --os           macOS release to clone (default: golden-gate / macOS 27)
+#                  Accepts 27|golden-gate, 26|tahoe, 15|sequoia, 14|sonoma
+#   --vanilla      Use the vanilla image instead of the default base image
 #   --no-graphics  Run headless (no GUI window)
 #   --vnc          Launch with VNC enabled (implies --no-graphics)
 #   --res          Set display resolution (default: 1512x916)
 #
 # Examples:
-#   tnew my-test-vm
+#   tnew gg-test                       # macOS 27 Golden Gate
+#   tnew tahoe-test --os 26            # macOS 26 Tahoe, for customers not on 27 yet
 #   tnew my-test-vm --vanilla
-#   tnew my-test-vm --no-graphics
 #   tnew my-test-vm --no-graphics --vnc
-#   tnew my-test-vm --vanilla --no-graphics --vnc
 #   tnew my-test-vm --res 1920x1080
 function tnew() {
-  local vm_name="${1:?Usage: tnew <vm-name> [--vanilla] [--no-graphics] [--vnc] [--res <WxH>]}"
-  local image="ghcr.io/cirruslabs/macos-tahoe-base:latest"
+  local vm_name="${1:?Usage: tnew <vm-name> [--os <ver>] [--vanilla] [--no-graphics] [--vnc] [--res <WxH>]}"
+  local os="golden-gate"
+  local variant="base"
   local no_graphics=false
   local vnc=false
   local resolution="1512x916"
@@ -39,17 +41,32 @@ function tnew() {
   shift
   while [[ $# -gt 0 ]]; do
     case "$1" in
-      --vanilla)     image="ghcr.io/cirruslabs/macos-tahoe-vanilla:latest" ;;
+      --os)          os="${2:?--os requires a value}"; shift ;;
+      --vanilla)     variant="vanilla" ;;
       --no-graphics) no_graphics=true ;;
       --vnc)         vnc=true; no_graphics=true ;;
-      --res)         resolution="$2"; shift ;;
+      --res)         resolution="${2:?--res requires a value}"; shift ;;
+      *)             echo "tnew: unknown option '$1'" >&2; return 1 ;;
     esac
     shift
   done
 
+  # Version numbers are accepted as shorthand for Apple's marketing names.
+  # NOTE: cirruslabs hyphenates this one — macos-golden-gate-*, not macos-goldengate-*
+  case "$os" in
+    27|golden-gate|goldengate) os="golden-gate" ;;
+    26|tahoe)                  os="tahoe" ;;
+    15|sequoia)                os="sequoia" ;;
+    14|sonoma)                 os="sonoma" ;;
+    *) echo "tnew: unknown --os '$os' (try 27, 26, 15, 14)" >&2; return 1 ;;
+  esac
+
+  local image="ghcr.io/cirruslabs/macos-${os}-${variant}:latest"
+
   if tart list | grep -q "^local.*\b$vm_name\b"; then
     echo "VM '$vm_name' already exists, starting..."
   else
+    echo "Cloning $image -> $vm_name"
     tart clone "$image" "$vm_name" || return 1
     tart set "$vm_name" --display "${resolution}px" --no-display-refit --random-mac --random-serial
   fi
