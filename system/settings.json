@@ -31,5 +31,6 @@
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "workbench.editorAssociations": {
     "*.md": "vscode.markdown.preview.editor"
-  }
+  },
+  "claudeCode.preferredLocation": "panel"
 }
