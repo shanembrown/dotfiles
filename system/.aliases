@@ -63,8 +63,11 @@ alias tmn='tmux new-session'
 alias icloud='cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs'
 alias iCloud='icloud'
 alias calls='cd $HOME/Library/CloudStorage/OneDrive-Jamf/claude-cowork/customers'
-alias apt-trade='env XDG_SESSION_TYPE=x11 /mnt/storage/Applications/awakened-poe-trade.AppImage &>/dev/null &'
-alias ee2='env XDG_SESSION_TYPE=x11 /mnt/storage/Applications/exiled-exchange-2.AppImage &>/dev/null &'
+alias poe='~/poe-tools/scripts/poe-start.sh'
+alias poe2='~/poe-tools/scripts/poe-start.sh --ee2'
+alias poestop='~/poe-tools/scripts/poe-stop.sh'
+alias poe2stop='~/poe-tools/scripts/poe-stop.sh'
+
 # -- zsh -----------------------------------------------------------------------
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
